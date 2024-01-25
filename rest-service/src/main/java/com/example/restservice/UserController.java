@@ -17,4 +17,8 @@ public class UserController {
     public UserDTO getUserByID(Integer id){
         return new UserDTO(userService.getUserByID(id));
     }
+
+    public UserDTO addUser(User user) {
+        return new UserDTO(userService.addUser(user));
+    }
 }
