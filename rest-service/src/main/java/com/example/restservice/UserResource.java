@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping(UserResource.USERS)
@@ -22,6 +22,11 @@ public class UserResource {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> user(@PathVariable Integer id){
         return new ResponseEntity<>(userController.getUserByID(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/email")
+    public ResponseEntity<Map<String,String>> email(@PathVariable Integer id){
+        return new ResponseEntity<>(Collections.singletonMap("email",userController.getUserByID(id).getEmail()),HttpStatus.OK);
     }
 
     @PostMapping
